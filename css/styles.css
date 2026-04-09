@@ -1,18 +1,27 @@
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background: #f4f4f4;
+  margin: 0;
 }
 
+/* CONTAINER */
 .container {
-  width: 420px;
-  margin: 30px auto;
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
   background: white;
-  padding: 20px 25px;
-  border-radius: 10px;
+  padding: 15px;
+  box-sizing: border-box;
 }
 
-/* SECTION TITLES */
+/* HEADINGS */
+h1 {
+  font-size: 20px;
+  text-align: center;
+}
+
 h2 {
+  font-size: 16px;
   margin-top: 20px;
   border-bottom: 1px solid #ddd;
   padding-bottom: 5px;
@@ -21,40 +30,68 @@ h2 {
 /* ROW LAYOUT */
 .row {
   display: grid;
-  grid-template-columns: 1fr 120px 80px;
+  grid-template-columns: 1fr 90px 70px;
+  gap: 8px;
   align-items: center;
-  margin: 6px 0;
-  gap: 10px;
+  margin: 8px 0;
 }
 
 /* LABEL */
 .row label {
-  text-align: left;
+  font-size: 14px;
 }
 
 /* INPUT */
 .row input {
   width: 100%;
-  padding: 5px;
+  padding: 10px;
+  font-size: 16px;
   text-align: right;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
-/* RIGHT COLUMN (totals or =) */
+/* LINE TOTAL */
 .row span {
   text-align: right;
   font-weight: bold;
+  font-size: 14px;
 }
 
-/* TOTAL DISPLAY */
+/* TOTAL BAR */
 .total {
   display: flex;
   justify-content: space-between;
-  font-weight: bold;
   font-size: 18px;
+  font-weight: bold;
   margin-top: 10px;
+}
+
+/* STICKY TOTAL (very useful) */
+.sticky-total {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding: 10px 0;
+  border-top: 2px solid #ddd;
 }
 
 /* DIVIDER */
 hr {
   margin: 15px 0;
+}
+
+/* DATE INPUT */
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* SMALL SCREENS */
+@media (max-width: 400px) {
+  .row {
+    grid-template-columns: 1fr 80px 60px;
+  }
 }
