@@ -45,7 +45,7 @@ h2 {
 .row input {
   width: 100%;
   padding: 10px;
-  font-size: 16px;
+  font-size: 16px !important;
   text-align: right;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -85,7 +85,7 @@ hr {
 input[type="date"] {
   width: 100%;
   padding: 10px;
-  font-size: 16px;
+  font-size: 16px !important;
   margin-bottom: 10px;
 }
 
