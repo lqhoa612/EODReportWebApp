@@ -31,7 +31,7 @@ function updateSales() {
   };
 
   const total =
-    (val("cashSale") - val("cashout") - val("refund")) +
+    val("cashout") +
     val("cashTaken") +
     val("eft") +
     val("online") +
