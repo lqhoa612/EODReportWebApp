@@ -42,6 +42,17 @@ h2 {
 }
 
 /* INPUT */
+input {
+  font-size: 16px;
+  padding: 12px;
+  text-align: right;
+  direction: ltr;
+}
+
+input::-webkit-clear-button {
+  display: block;
+}
+
 .row input {
   width: 100%;
   padding: 10px;
