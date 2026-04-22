@@ -95,3 +95,14 @@ input[type="date"] {
     grid-template-columns: 1fr 80px 60px;
   }
 }
+
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  margin-top: 10px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}

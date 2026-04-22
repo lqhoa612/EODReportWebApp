@@ -63,3 +63,19 @@ function updateCashTill() {
 
   document.getElementById("cashTotal").innerText = total.toFixed(2);
 }
+
+document.getElementById("clearBtn").addEventListener("click", clearAll);
+
+function clearAll() {
+  if (!confirm("Clear all data?")) return;
+
+  const inputs = document.querySelectorAll("input");
+
+  inputs.forEach(input => {
+    if (input.type !== "date") {
+      input.value = "";
+    }
+  });
+
+  calculateAll();
+}
