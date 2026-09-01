@@ -95,18 +95,10 @@ hr {
 /* DATE INPUT */
 input[type="date"] {
   width: 100%;
+  box-sizing: border-box;
   padding: 10px;
   font-size: 16px !important;
   margin-bottom: 10px;
-}
-
-/* STICKY DATE (stays visible while scrolling the count) */
-.sticky-date {
-  position: sticky;
-  top: 0;
-  background: white;
-  padding-top: 10px;
-  z-index: 10;
 }
 
 /* SMALL SCREENS */
