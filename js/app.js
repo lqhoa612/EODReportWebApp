@@ -4,54 +4,40 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function init() {
-  // Use EVENT DELEGATION (more robust)
   document.body.addEventListener("input", handleInput);
+  document.getElementById("clearBtn").addEventListener("click", clearAll);
 
   calculateAll(); // initial
 }
 
 // ===== HANDLE INPUT =====
 function handleInput(e) {
-  if (e.target.matches("input[type='number']")) {
+  if (e.target.matches(".cashCount")) {
     calculateAll();
   }
 }
 
 // ===== MAIN =====
 function calculateAll() {
-  updateSales();
-  updateCashTill();
+  const notesTotal = sumGroup("notesGroup");
+  const coinsTotal = sumGroup("coinsGroup");
+
+  document.getElementById("notesTotal").innerText = notesTotal.toFixed(2);
+  document.getElementById("coinsTotal").innerText = coinsTotal.toFixed(2);
+  document.getElementById("cashTotal").innerText = (notesTotal + coinsTotal).toFixed(2);
 }
 
-// ===== SALES =====
-function updateSales() {
-  const val = id => {
-    const el = document.getElementById(id);
-    return el ? parseFloat(el.value) || 0 : 0;
-  };
-
-  const total =
-    val("cashout") +
-    val("cashTaken") +
-    val("eft") +
-    val("online") +
-    val("kiosk") +
-    val("doordash") +
-    val("uber");
-
-  document.getElementById("totalSale").innerText = total.toFixed(2);
-}
-
-// ===== CASH TILL =====
-function updateCashTill() {
-  const rows = document.querySelectorAll(".cashCount");
-  const lineTotals = document.querySelectorAll(".lineTotal");
+// ===== SUM A DENOMINATION GROUP (Notes / Coins) =====
+function sumGroup(groupId) {
+  const group = document.getElementById(groupId);
+  const rows = group.querySelectorAll(".cashCount");
+  const lineTotals = group.querySelectorAll(".lineTotal");
 
   let total = 0;
 
   rows.forEach((input, i) => {
     const count = parseInt(input.value) || 0;
-    const value = parseInt(input.dataset.value);
+    const value = parseFloat(input.dataset.value) || 0;
 
     const line = count * value;
     total += line;
@@ -61,10 +47,8 @@ function updateCashTill() {
     }
   });
 
-  document.getElementById("cashTotal").innerText = total.toFixed(2);
+  return total;
 }
-
-document.getElementById("clearBtn").addEventListener("click", clearAll);
 
 function clearAll() {
   if (!confirm("Clear all data?")) return;
