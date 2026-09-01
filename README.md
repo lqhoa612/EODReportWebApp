@@ -1,11 +1,11 @@
 # Cash Till Counter
 
-A small single-page web app for counting cash in a till/drawer by denomination (Australian notes and coins) and getting an instant total.
+A small single-page web app for counting cash in a till/drawer by denomination and getting an instant total.
 
 ## Features
 
-- Enter counts for each note ($100, $50, $20, $10, $5) and coin (\$2, \$1, 50c, 20c, 10c, 5c)
-- Live line totals, notes subtotal, coins subtotal, and grand total as you type
+- Enter counts for $50, $20, $10, $5, $2, and $1 notes (count a $100 note as two $50s)
+- Live line totals and a running grand total as you type
 - Optional count date for record-keeping
 - Clear All button to reset a count
 

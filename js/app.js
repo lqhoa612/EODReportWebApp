@@ -19,19 +19,8 @@ function handleInput(e) {
 
 // ===== MAIN =====
 function calculateAll() {
-  const notesTotal = sumGroup("notesGroup");
-  const coinsTotal = sumGroup("coinsGroup");
-
-  document.getElementById("notesTotal").innerText = notesTotal.toFixed(2);
-  document.getElementById("coinsTotal").innerText = coinsTotal.toFixed(2);
-  document.getElementById("cashTotal").innerText = (notesTotal + coinsTotal).toFixed(2);
-}
-
-// ===== SUM A DENOMINATION GROUP (Notes / Coins) =====
-function sumGroup(groupId) {
-  const group = document.getElementById(groupId);
-  const rows = group.querySelectorAll(".cashCount");
-  const lineTotals = group.querySelectorAll(".lineTotal");
+  const rows = document.querySelectorAll(".cashCount");
+  const lineTotals = document.querySelectorAll(".lineTotal");
 
   let total = 0;
 
@@ -47,7 +36,7 @@ function sumGroup(groupId) {
     }
   });
 
-  return total;
+  document.getElementById("cashTotal").innerText = total.toFixed(2);
 }
 
 function clearAll() {
