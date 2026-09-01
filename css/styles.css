@@ -119,6 +119,10 @@ button {
   border-radius: 6px;
 }
 
+.share-btn {
+  background: #1877f2;
+}
+
 /* CASH SECTION - tighter layout */
 .cash-row {
   display: grid;

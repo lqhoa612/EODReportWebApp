@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function init() {
   document.body.addEventListener("input", handleInput);
   document.getElementById("clearBtn").addEventListener("click", clearAll);
+  document.getElementById("shareBtn").addEventListener("click", shareCount);
 
   calculateAll(); // initial
 }
@@ -37,6 +38,42 @@ function calculateAll() {
   });
 
   document.getElementById("cashTotal").innerText = total.toFixed(2);
+}
+
+// ===== SHARE =====
+function buildShareText() {
+  const dateVal = document.getElementById("date").value;
+  const lines = [];
+
+  document.querySelectorAll(".cash-row").forEach(row => {
+    const label = row.querySelector("label").innerText;
+    const count = parseInt(row.querySelector(".cashCount").value) || 0;
+    const lineTotal = row.querySelector(".lineTotal").innerText;
+
+    if (count > 0) {
+      lines.push(`${label} x ${count} = $${lineTotal}`);
+    }
+  });
+
+  const total = document.getElementById("cashTotal").innerText;
+
+  let text = "Cash Till Count";
+  if (dateVal) text += ` - ${dateVal}`;
+  text += "\n";
+  if (lines.length) text += lines.join("\n") + "\n";
+  text += `Total: $${total}`;
+
+  return text;
+}
+
+function shareCount() {
+  const text = buildShareText();
+
+  if (navigator.share) {
+    navigator.share({ title: "Cash Till Count", text }).catch(() => {});
+  } else {
+    alert("Sharing isn't supported on this browser.\n\n" + text);
+  }
 }
 
 function clearAll() {
