@@ -100,6 +100,15 @@ input[type="date"] {
   margin-bottom: 10px;
 }
 
+/* STICKY DATE (stays visible while scrolling the count) */
+.sticky-date {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding-top: 10px;
+  z-index: 10;
+}
+
 /* SMALL SCREENS */
 @media (max-width: 400px) {
   .row {
