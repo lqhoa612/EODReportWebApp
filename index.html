@@ -12,9 +12,17 @@
     <div class="container">
         <h1>Cash Till Counter</h1>
 
-        <!-- DATE -->
-        <label>Count Date:</label>
-        <input type="date" inputmode="decimal" pattern="[0-9]*" id="date">
+        <!-- DATE / TIME -->
+        <div class="datetime-row">
+            <div class="datetime-field">
+                <label>Count Date:</label>
+                <input type="date" inputmode="decimal" pattern="[0-9]*" id="date">
+            </div>
+            <div class="datetime-field">
+                <label>Count Time:</label>
+                <input type="time" id="time">
+            </div>
+        </div>
 
         <h2>Cash in Till</h2>
 

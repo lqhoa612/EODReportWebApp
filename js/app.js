@@ -41,8 +41,15 @@ function calculateAll() {
 }
 
 // ===== SHARE =====
+function formatDateAU(iso) {
+  if (!iso) return "";
+  const [year, month, day] = iso.split("-");
+  return `${day}/${month}/${year}`;
+}
+
 function buildShareText() {
   const dateVal = document.getElementById("date").value;
+  const timeVal = document.getElementById("time").value;
   const lines = [];
 
   document.querySelectorAll(".cash-row").forEach(row => {
@@ -58,7 +65,9 @@ function buildShareText() {
   const total = document.getElementById("cashTotal").innerText;
 
   let text = "Cash Till Count";
-  if (dateVal) text += ` - ${dateVal}`;
+  const dateStr = formatDateAU(dateVal);
+  if (dateStr) text += ` - ${dateStr}`;
+  if (timeVal) text += ` ${timeVal}`;
   text += "\n";
   if (lines.length) text += lines.join("\n") + "\n";
   text += `Total: $${total}`;
@@ -82,7 +91,7 @@ function clearAll() {
   const inputs = document.querySelectorAll("input");
 
   inputs.forEach(input => {
-    if (input.type !== "date") {
+    if (input.type !== "date" && input.type !== "time") {
       input.value = "";
     }
   });

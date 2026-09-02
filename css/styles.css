@@ -93,8 +93,25 @@ hr {
   margin: 15px 0;
 }
 
-/* DATE INPUT */
-input[type="date"] {
+/* DATE / TIME ROW */
+.datetime-row {
+  display: flex;
+  gap: 10px;
+}
+
+.datetime-field {
+  flex: 1;
+  min-width: 0;
+}
+
+.datetime-field label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* DATE / TIME INPUTS */
+input[type="date"],
+input[type="time"] {
   -webkit-appearance: none;
   appearance: none;
   width: 100% !important;
