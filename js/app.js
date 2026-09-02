@@ -90,7 +90,43 @@ function buildShareText() {
   if (lines.length) text += lines.join("\n") + "\n";
   text += `Total: $${total}`;
 
+  const card = buildCardReconciliation();
+  if (card) text += `\n\n${card}`;
+
   return text;
+}
+
+// ===== CARD RECONCILIATION =====
+// Checks EFTPOS + Kiosk against "Card at shop". The result is reported
+// only in the shared message, never shown in the app.
+function buildCardReconciliation() {
+  const fields = ["eftpos", "kiosk", "cardAtShop"];
+  const raw = fields.map(id => document.getElementById(id).value.trim());
+
+  // Nothing entered at all - leave the section out entirely rather than
+  // reporting a meaningless 0 + 0 = 0 match.
+  if (raw.every(v => v === "")) return "";
+
+  const toCents = v => Math.round((parseFloat(v) || 0) * 100);
+  const [eftposCents, kioskCents, shopCents] = raw.map(toCents);
+
+  const sumCents = eftposCents + kioskCents;
+  const diffCents = sumCents - shopCents;
+  const money = cents => (cents / 100).toFixed(2);
+
+  let out = "Card Reconciliation\n";
+  out += `EFTPOS card: $${money(eftposCents)}\n`;
+  out += `Kiosk: $${money(kioskCents)}\n`;
+  out += `Card at shop: $${money(shopCents)}\n`;
+
+  if (diffCents === 0) {
+    out += "Result: TRUE";
+  } else {
+    const direction = diffCents > 0 ? "over" : "under";
+    out += `Result: FALSE (EFTPOS + Kiosk ${direction} by $${money(Math.abs(diffCents))})`;
+  }
+
+  return out;
 }
 
 function shareCount() {
@@ -106,7 +142,7 @@ function shareCount() {
 function clearAll() {
   if (!confirm("Clear all data?")) return;
 
-  document.querySelectorAll(".cashCount").forEach(input => {
+  document.querySelectorAll(".cashCount, .cardAmount").forEach(input => {
     input.value = "";
   });
 
