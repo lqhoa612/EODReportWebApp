@@ -93,36 +93,15 @@ hr {
   margin: 15px 0;
 }
 
-/* DATE / TIME ROW */
+/* DATE / TIME (auto, read-only display) */
 .datetime-row {
   display: flex;
+  justify-content: space-between;
   gap: 10px;
-}
-
-.datetime-field {
-  flex: 1;
-  min-width: 0;
-}
-
-.datetime-field label {
-  display: block;
-  margin-bottom: 4px;
-}
-
-/* DATE / TIME INPUTS */
-input[type="date"],
-input[type="time"] {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100% !important;
-  max-width: 100%;
-  min-width: 0;
-  box-sizing: border-box !important;
-  padding: 10px;
-  font-size: 16px !important;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  font-size: 15px;
+  color: #555;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
 }
 
 /* SMALL SCREENS */

@@ -12,16 +12,10 @@
     <div class="container">
         <h1>Cash Till Counter</h1>
 
-        <!-- DATE / TIME -->
+        <!-- DATE / TIME (auto, from device clock) -->
         <div class="datetime-row">
-            <div class="datetime-field">
-                <label>Count Date:</label>
-                <input type="date" inputmode="decimal" pattern="[0-9]*" id="date">
-            </div>
-            <div class="datetime-field">
-                <label>Count Time:</label>
-                <input type="time" id="time">
-            </div>
+            <span id="dateDisplay">--/--/----</span>
+            <span id="timeDisplay">--:--</span>
         </div>
 
         <h2>Cash in Till</h2>
@@ -59,6 +53,30 @@
         <div class="cash-row">
             <label>$1</label>
             <input type="number" inputmode="decimal" pattern="[0-9]*" class="cashCount" data-value="1">
+            <span class="lineTotal">0.00</span>
+        </div>
+
+        <div class="cash-row">
+            <label>50c</label>
+            <input type="number" inputmode="decimal" pattern="[0-9]*" class="cashCount" data-value="0.50">
+            <span class="lineTotal">0.00</span>
+        </div>
+
+        <div class="cash-row">
+            <label>20c</label>
+            <input type="number" inputmode="decimal" pattern="[0-9]*" class="cashCount" data-value="0.20">
+            <span class="lineTotal">0.00</span>
+        </div>
+
+        <div class="cash-row">
+            <label>10c</label>
+            <input type="number" inputmode="decimal" pattern="[0-9]*" class="cashCount" data-value="0.10">
+            <span class="lineTotal">0.00</span>
+        </div>
+
+        <div class="cash-row">
+            <label>5c</label>
+            <input type="number" inputmode="decimal" pattern="[0-9]*" class="cashCount" data-value="0.05">
             <span class="lineTotal">0.00</span>
         </div>
 
